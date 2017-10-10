@@ -21,3 +21,7 @@ npm install -g vue-cli
 ```
 vue init webpack vue-hello
 ```
+
+### 视频
+
+http://digicity-1253322599.costj.myqcloud.com/vue-hello.mp4
