@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>如何用 gh-pages 机制托管一个静态页面？ · GitBook</title>
+        <title>把数据放进 Vuex 的 Store  · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="nodejs-what.html" />
+    <link rel="next" href="mutation.html" />
     
     
-    <link rel="prev" href="what-how.html" />
+    <link rel="prev" href="vue-router.html" />
     
 
     </head>
@@ -128,7 +128,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="gh-pages.html">
+        <li class="chapter " data-level="1.4" data-path="gh-pages.html">
             
                 <a href="gh-pages.html">
             
@@ -1181,7 +1181,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.85" data-path="vuex-store.html">
+        <li class="chapter active" data-level="1.85" data-path="vuex-store.html">
             
                 <a href="vuex-store.html">
             
@@ -1263,7 +1263,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >如何用 gh-pages 机制托管一个静态页面？</a>
+        <a href=".." >把数据放进 Vuex 的 Store </a>
     </h1>
 </div>
 
@@ -1278,28 +1278,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>&#x4EFB;&#x52A1;&#x8981;&#x6C42;&#xFF1A;</p>
-<ul>
-<li>&#x5199;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684; html &#x9875;&#x9762;</li>
-<li>&#x53EF;&#x4EE5;&#x5230; username.github.io/project &#x4E0B;&#x9762;&#x8BBF;&#x95EE;&#x5230;</li>
-</ul>
-<h3 id="&#x5177;&#x4F53;&#x6B65;&#x9AA4;">&#x5177;&#x4F53;&#x6B65;&#x9AA4;</h3>
-<p>&#x9996;&#x5148;&#x786E;&#x5B9A;&#x80FD;&#x4E0D;&#x80FD;&#x5F80; github &#x4ED3;&#x5E93;&#x4E2D;&#x63A8;&#x9001;&#x6587;&#x4EF6;&#xFF1F;( ssh-key &#x8981;&#x63D0;&#x524D;&#x52A0;&#x597D;)&#x3002; &#x7136;&#x540E;&#x5230; github.com &#x521B;&#x5EFA; dj-demos &#x4ED3;&#x5E93;&#x3002;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x672C;&#x5730;&#x521B;&#x5EFA;&#x540C;&#x540D;&#x9879;&#x76EE;</p>
-<pre><code>mkdir dj-demos
-cd dj-demos
-git init
-atom index.html README.md
-git add -A
-git commit -m&quot;msg&quot;
-git remote add origin git@github.com:happypeter/dj-demos.git
-git push -u origin master
-</code></pre><p>&#x4F46;&#x662F;&#xFF0C;&#x9875;&#x9762;&#x653E;&#x5230; master &#x5206;&#x652F;&#xFF0C;&#x662F;&#x4E0D;&#x80FD;&#x663E;&#x793A;&#x5230; happypeter.github.io/dj-demos &#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x7684;&#x3002;&#x9700;&#x8981;&#x521B;&#x5EFA; gh-pages &#x5206;&#x652F;</p>
-<pre><code>git checkout -b gh-pages
-</code></pre><p>&#x4E0A;&#x9762;&#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x62F7;&#x8D1D;&#x4E86;&#x5F53;&#x524D;&#x7684; master &#x5206;&#x652F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6240;&#x6709;&#x7684; master &#x5206;&#x652F;&#x4E0A;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5728; gh-pages &#x5206;&#x652F;&#x4E0A;&#x4E5F;&#x6709;&#x3002;</p>
-<p>&#x5C31;&#x662F;&#x628A;&#x672C;&#x5730; gh-pages &#x5206;&#x652F;&#x5185;&#x5BB9;&#xFF0C;&#x4E0A;&#x4F20;&#x5230; github.com</p>
-<pre><code>git push -u origin gh-pages
-</code></pre><p>&#x7B49;&#x5F85;&#x4E00;&#x4F1A;&#x513F;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5230;  <a href="https://happypeter.github.io/dj-demo" target="_blank">https://happypeter.github.io/dj-demo</a> &#x4E0B;&#x770B;&#x5230;&#x7F51;&#x9875;&#x4E86;&#x3002;</p>
+                                <p>&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;&#x6211;&#x5728; CommentBox &#x7EC4;&#x4EF6;&#x4E2D;&#xFF0C;&#x6DFB;&#x52A0;&#x8BC4;&#x8BBA;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x591F;&#x5B9E;&#x65F6;&#x7684;&#x5728; PostBody &#x4E2D;&#x770B;&#x5230;&#x8BC4;&#x8BBA;&#x6570;&#x3002;&#x8FD9;&#x4E2A;&#x6D89;&#x53CA;&#x5230;&#x4E86;&#x7EC4;&#x4EF6;&#x95F4;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x901A;&#x4FE1;&#x3002;&#x5728; Vue &#x6846;&#x67B6;&#x4E0B;&#xFF0C;&#x662F;&#x901A;&#x8FC7; <a href="https://vuex.vuejs.org/zh-cn/" target="_blank">vuex</a> &#x6765;&#x5B8C;&#x6210;&#x7684;&#x3002;&#x672C;&#x8282;&#x5148;&#x6765;&#x5B9E;&#x73B0;&#x628A;&#x6570;&#x636E;&#x642C;&#x5BB6;&#x5230; vuex &#x7684; store &#x4E2D;&#x3002;</p>
+<h3 id="&#x88C5;&#x5305;">&#x88C5;&#x5305;</h3>
+<p>vuex &#x53EF;&#x4EE5;&#x4F5C;&#x4E3A; npm &#x5305;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;</p>
+<pre><code>npm i vuex
+</code></pre><h3 id="&#x521B;&#x5EFA;-store">&#x521B;&#x5EFA; store</h3>
+<p>&#x5C31;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; store/index.js</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>
+<span class="hljs-keyword">import</span> Vuex <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vuex&apos;</span>
+<span class="hljs-keyword">import</span> comment <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./modules/comment&apos;</span>
+
+Vue.use(Vuex)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store({
+  modules: {
+    comment
+  }
+})
+</code></pre>
+<h3 id="&#x4EE3;&#x7801;">&#x4EE3;&#x7801;</h3>
+<p>commit: vuex read data from store</p>
 
                                 
                                 </section>
@@ -1327,12 +1325,12 @@ git push -u origin master
 
             
                 
-                <a href="what-how.html" class="navigation navigation-prev " aria-label="Previous page: 课程要讲什么？">
+                <a href="vue-router.html" class="navigation navigation-prev " aria-label="Previous page: Vue 路由器 vue-router">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="nodejs-what.html" class="navigation navigation-next " aria-label="Next page: 什么是 Nodejs/NVM ？">
+                <a href="mutation.html" class="navigation navigation-next " aria-label="Next page: 修改 store 中的数据">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1343,7 +1341,7 @@ git push -u origin master
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"如何用 gh-pages 机制托管一个静态页面？","level":"1.4","depth":1,"next":{"title":"什么是 Nodejs/NVM ？","level":"1.5","depth":1,"path":"faq/nodejs-what.md","ref":"./faq/nodejs-what.md","articles":[]},"previous":{"title":"课程要讲什么？","level":"1.3","depth":1,"path":"faq/what-how.md","ref":"./faq/what-how.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq/gh-pages.md","mtime":"2017-09-07T06:51:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T09:13:14.359Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"把数据放进 Vuex 的 Store ","level":"1.85","depth":1,"next":{"title":"修改 store 中的数据","level":"1.86","depth":1,"path":"faq/mutation.md","ref":"./faq/mutation.md","articles":[]},"previous":{"title":"Vue 路由器 vue-router","level":"1.84","depth":1,"path":"faq/vue-router.md","ref":"./faq/vue-router.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq/vuex-store.md","mtime":"2017-10-10T06:30:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T09:13:14.359Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
