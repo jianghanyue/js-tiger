@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>如何共享 store 中的数据 · GitBook</title>
+        <title>加载初始化数据 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="vuex-api.html" />
     
-    
-    <link rel="prev" href="mutation.html" />
+    <link rel="prev" href="vuex-api.html" />
     
 
     </head>
@@ -1155,7 +1153,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.83" data-path="vue-props.html">
+        <li class="chapter " data-level="1.83" data-path="computed.md">
+            
+                <span>
+            
+                    
+                    计算属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.84" data-path="vue-props.html">
             
                 <a href="vue-props.html">
             
@@ -1168,7 +1179,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.84" data-path="vue-router.html">
+        <li class="chapter " data-level="1.85" data-path="vue-router.html">
             
                 <a href="vue-router.html">
             
@@ -1181,7 +1192,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.85" data-path="vuex-store.html">
+        <li class="chapter " data-level="1.86" data-path="vuex-store.html">
             
                 <a href="vuex-store.html">
             
@@ -1194,25 +1205,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.86" data-path="mutation.html">
+        <li class="chapter " data-level="1.87" data-path="mutation.html">
             
                 <a href="mutation.html">
             
                     
                     修改 store 中的数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.87" data-path="read-store.html">
-            
-                <a href="read-store.html">
-            
-                    
-                    如何共享 store 中的数据
             
                 </a>
             
@@ -1226,6 +1224,19 @@
             
                     
                     读取 API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.89" data-path="vuex-load.html">
+            
+                <a href="vuex-load.html">
+            
+                    
+                    加载初始化数据
             
                 </a>
             
@@ -1263,7 +1274,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >如何共享 store 中的数据</a>
+        <a href=".." >加载初始化数据</a>
     </h1>
 </div>
 
@@ -1278,20 +1289,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>comments &#x6570;&#x636E;&#xFF0C;&#x662F; CommentBox &#x7EC4;&#x4EF6;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x5DF2;&#x7ECF;&#x4FDD;&#x5B58;&#x5230;&#x4E86; vuex store &#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x5C31;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5728; PostBody &#x7EC4;&#x4EF6;&#x4E2D;&#x62FF;&#x5230;&#x8BC4;&#x8BBA;&#x6570;&#x3002;</p>
-<h3 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h3>
-<p>&#x76F4;&#x63A5;&#x5728; PostBody &#x4E2D;&#x8BFB;&#x53D6; store &#x6570;&#x636E;&#x5373;&#x53EF;&#xFF0C;&#x8DDF;&#x5728; CommentBox &#x4E2D;&#x7684;&#x8BFB;&#x53D6;&#x8BED;&#x53E5;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#x3002;</p>
-<pre><code class="lang-js">computed: {
-  commentNo: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.comments.length
-  },
-  comments: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.$store.state.comment.all
-  }
+                                <h3 id="created-&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;">created &#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;</h3>
+<p>vue &#x548C; react &#x4E00;&#x6837;&#xFF0C;&#x4E5F;&#x6709;<a href="https://cn.vuejs.org/v2/guide/instance.html#&#x751F;&#x547D;&#x5468;&#x671F;&#x56FE;&#x793A;" target="_blank">&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;</a> &#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x7528; created &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x52A0;&#x8F7D; API &#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x4E66;&#x5199;-mutation">&#x4E66;&#x5199; mutation</h3>
+<p>&#x8981;&#x4FEE;&#x6539; store &#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E00;&#x5B9A;&#x662F;&#x8981;&#x6709; mutaion &#x7684;&#x3002;</p>
+<pre><code>&apos;LOAD_COMMENTS&apos; (state, { comments }) {
+  this.state.all = comments
+}
+</code></pre><p>&#x5982;&#x679C;&#x6570;&#x636E;&#x4E0D;&#x9700;&#x8981;&#x901A;&#x8FC7; API &#x83B7;&#x5F97;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728; created &#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x6267;&#x884C; commit &#x6765;&#x8C03;&#x7528; mutation &#x4E86;&#x3002;</p>
+<pre><code>this.$store.commit(&apos;LOAD_COMMENTS&apos;, { comments })
+</code></pre><h3 id="&#x89E6;&#x53D1;-action">&#x89E6;&#x53D1; Action</h3>
+<p>&#x4F46;&#x662F;&#xFF0C;Mutaion &#x8981;&#x6C42;&#x5FC5;&#x987B;&#x662F;&#x540C;&#x6B65;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x8981;&#x53D1; API &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x8981;&#x6765;&#x5199; action &#x6765;&#x5B8C;&#x6210;&#x3002;</p>
+<p>Action &#x7C7B;&#x4F3C;&#x4E8E; mutation&#xFF0C;&#x4E0D;&#x540C;&#x5728;&#x4E8E;&#xFF1A;</p>
+<ul>
+<li>Action &#x63D0;&#x4EA4;&#x7684;&#x662F; mutation&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x53D8;&#x66F4;&#x72B6;&#x6001;&#x3002;</li>
+<li>Action &#x53EF;&#x4EE5;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x3002;</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://vuex.vuejs.org/zh-cn/actions.html" target="_blank">https://vuex.vuejs.org/zh-cn/actions.html</a></p>
+<p>&#x5148;&#x6765;&#x5199;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684; action:</p>
+<pre><code class="lang-js"><span class="hljs-string">&apos;FETCH_COMMENTS&apos;</span> ({ commit }) {
+  commit(<span class="hljs-string">&apos;LOAD_COMMENTS&apos;</span>, { comments })
 }
 </code></pre>
-<h3 id="&#x4EE3;&#x7801;">&#x4EE3;&#x7801;</h3>
-<p>commit: read store</p>
+<p>&#x53EF;&#x89C1;&#xFF0C;action &#x6700;&#x6838;&#x5FC3;&#x7684;&#x529F;&#x80FD;&#x4E4B;&#x4E00;&#x5C31;&#x662F;&#x6765;&#x89E6;&#x53D1; mutation &#x3002;</p>
+<p>&#x4F46;&#x662F;&#x4E0A;&#x9762;&#x7684; comments &#x6570;&#x636E;&#x4ECE;&#x54EA;&#x91CC;&#x6765;&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x5C31;&#x662F; actions &#x4E4B;&#x4E2D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5199;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#x8BED;&#x53E5;&#x6765;&#x4ECE; json-sever &#x4E2D;&#x83B7;&#x53D6;&#x5230; comments &#x3002;</p>
+<h3 id="&#x89C6;&#x9891;">&#x89C6;&#x9891;</h3>
+<p><a href="http://digicity-1253322599.costj.myqcloud.com/load.mp4" target="_blank">http://digicity-1253322599.costj.myqcloud.com/load.mp4</a></p>
 
                                 
                                 </section>
@@ -1319,14 +1342,10 @@
 
             
                 
-                <a href="mutation.html" class="navigation navigation-prev " aria-label="Previous page: 修改 store 中的数据">
+                <a href="vuex-api.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 读取 API">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="vuex-api.html" class="navigation navigation-next " aria-label="Next page: 读取 API">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1335,7 +1354,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"如何共享 store 中的数据","level":"1.87","depth":1,"next":{"title":"读取 API","level":"1.88","depth":1,"path":"faq/vuex-api.md","ref":"./faq/vuex-api.md","articles":[]},"previous":{"title":"修改 store 中的数据","level":"1.86","depth":1,"path":"faq/mutation.md","ref":"./faq/mutation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq/read-store.md","mtime":"2017-10-10T07:39:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T09:13:14.359Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"加载初始化数据","level":"1.89","depth":1,"previous":{"title":"读取 API","level":"1.88","depth":1,"path":"faq/vuex-api.md","ref":"./faq/vuex-api.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq/vuex-load.md","mtime":"2017-10-11T08:38:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-11T08:41:22.913Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
