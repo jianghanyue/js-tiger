@@ -28,4 +28,4 @@ Github 上创建项目 voteup ，代码随时上传到 Github。
 
 ### 视频
 
-voteup-login-form
+http://digicity-1253322599.costj.myqcloud.com/voteup-login-form.mp4
